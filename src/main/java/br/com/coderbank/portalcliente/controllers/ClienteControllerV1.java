@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -33,6 +34,22 @@ public class ClienteControllerV1 {
         var cliente = clienteRepository.findById(id).orElse(null);
 
         return cliente != null ? ResponseEntity.ok(cliente) : ResponseEntity.notFound().build();
+
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Cliente> atualizar(@PathVariable(value = "id") UUID id,
+                                                @RequestBody Cliente cliente) {
+
+        var clienteDTOOptional = clienteRepository.findById(id);
+
+        return clienteDTOOptional
+// O map é utilizado para realizar transformação de dados, aqui estamos transformando
+// o Optional<Cliente> em uma resposta HTTP.
+// Se o cliente existir, atualiza no banco de dados e retorna uma resposta 200 (OK)
+// com o cliente atualizado. Caso contrário, retorna uma resposta 404 (Not Found).
+                .map(c -> ResponseEntity.ok(clienteRepository.save(cliente)))
+                .orElseGet(() -> ResponseEntity.notFound().build());
 
     }
 
