@@ -32,4 +32,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
 public interface ClienteRepository extends JpaRepository<Cliente, UUID> {
+
+//Query methods: para criar consultas sql automaticamente de maneira programática
+// iniciamos com o nome da operação que queremos realizar seguido pelo nome do atributo da entidade
+
+    boolean existsByCpf(String numeroCpf);
 }
