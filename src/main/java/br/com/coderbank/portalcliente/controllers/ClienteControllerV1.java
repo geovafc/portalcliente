@@ -1,5 +1,6 @@
 package br.com.coderbank.portalcliente.controllers;
 
+import br.com.coderbank.portalcliente.dtos.request.ClienteRequestDTO;
 import br.com.coderbank.portalcliente.entities.Cliente;
 import br.com.coderbank.portalcliente.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
