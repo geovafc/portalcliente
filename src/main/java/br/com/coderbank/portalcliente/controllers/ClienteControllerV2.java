@@ -22,4 +22,11 @@ public class ClienteControllerV2 {
                 .body(clienteService.salvar(clienteRequestDTO));
     }
 
+    @PostMapping
+    public ResponseEntity<ClienteResponseDTO> salvarNovo(@RequestBody ClienteRequestDTO clienteRequestDTO) {
+
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(clienteService.salvar(clienteRequestDTO));
+    }
+
 }
