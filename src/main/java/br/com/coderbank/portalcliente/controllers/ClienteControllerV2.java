@@ -3,6 +3,7 @@ package br.com.coderbank.portalcliente.controllers;
 import br.com.coderbank.portalcliente.dtos.request.ClienteRequestDTO;
 import br.com.coderbank.portalcliente.dtos.response.ClienteResponseDTO;
 import br.com.coderbank.portalcliente.services.ClienteService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ public class ClienteControllerV2 {
     private ClienteService clienteService;
 
     @PostMapping
-    public ResponseEntity<ClienteResponseDTO> salvar(@RequestBody ClienteRequestDTO clienteRequestDTO) {
+    public ResponseEntity<ClienteResponseDTO> salvar(@Valid @RequestBody ClienteRequestDTO clienteRequestDTO) {
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(clienteService.salvar(clienteRequestDTO));
