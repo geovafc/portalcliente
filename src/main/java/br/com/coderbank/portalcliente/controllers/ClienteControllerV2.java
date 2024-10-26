@@ -34,9 +34,13 @@ public class ClienteControllerV2 {
             @RequestParam(defaultValue = "0") int pagina,
             @RequestParam(defaultValue = "10") int tamanho
     ) {
+//        Definir os parâmetros de paginação e habilita a paginação no repository
         var pageable = PageRequest.of(pagina, tamanho);
+//        Retorna uma pagina de resultados
+//        contendo informações sobre a página atual, o número total de páginas,
+//        o número total de elementos e a lista de elementos da página atual.
+//        Page<ClienteResumoResponseDTO>
         var paginaClientes = clienteService.obterClientes(pageable);
-//        todo : Validar se está preenchendo corretamente o objeto da paginacao
 
         return new PagedResponse<>(paginaClientes);
     }

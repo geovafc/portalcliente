@@ -49,6 +49,9 @@ public class ClienteService {
     }
 
     public Page<ClienteResumoResponseDTO> obterClientes(Pageable pageable) {
+//        pageable -> habilita a paginação
+        //    todo : Mostrar por terceiro essa implementacao
+
         return clienteRepository.findAll(pageable)
                 .map(this::converteParaClienteConsultaResponseDTO);
         //    todo : Mostrar por segundo essa implementacao
