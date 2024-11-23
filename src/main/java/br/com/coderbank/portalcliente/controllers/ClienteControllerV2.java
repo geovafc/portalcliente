@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v2/clientes")
-@Slf4j
+//@Slf4j
 public class ClienteControllerV2 {
 
     @Autowired
@@ -23,11 +23,20 @@ public class ClienteControllerV2 {
 
     @PostMapping
     public ResponseEntity<ClienteResponseDTO> salvar(@Valid @RequestBody ClienteRequestDTO clienteRequestDTO) {
-        log.info("m=salvar, ClienteRequestDTO={}", clienteRequestDTO);
+//        log.info("m=salvar, ClienteRequestDTO={}", clienteRequestDTO);
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(clienteService.salvar(clienteRequestDTO));
     }
+
+
+    // NA PAGINACAO OS DADOS SAO QUEBRADOS DE ACORDO COM O TAMANHO DA QUANTIDADE DE REGISTROS
+//    QUE QUERO VISUALIZAR
+
+//    100 REGISTROS
+//    DE ACORDO COM O TAMANHO, A QUANTIDADE DE PAGINAS SAO DEFINIDAS
+//    PG=0 E TAMANHO=10, ENTAO SERAO 10 PAGINAS DE 10
+//    PG=0 E TAMANHO=30, ENTAO SERAO 3 PAGINAS DE 30 E 1 DE 10
 
     @GetMapping
     public PagedResponse<ClienteResumoResponseDTO> obterClientes(

@@ -50,16 +50,16 @@ public class ClienteService {
 
     public Page<ClienteResumoResponseDTO> obterClientes(Pageable pageable) {
 //        pageable -> habilita a paginação
-        //    todo : Mostrar por terceiro essa implementacao
+        //    todo : MOSTRAR POR TERCEIRO ESSA IMPLEMENTACAO
 
         return clienteRepository.findAll(pageable)
                 .map(this::converteParaClienteConsultaResponseDTO);
-        //    todo : Mostrar por segundo essa implementacao
+        //    todo : MOSTRAR POR SEGUNDO ESSA IMPLEMENTACAO
 
 //                .map(cliente -> this.converteParaClienteConsultaResponseDTO(cliente));
     }
 
-//    todo : Mostrar primeiro essa implementacao
+//    todo : MOSTRAR POR PRIMEIRO ESSA IMPLEMENTACAO
     //    public Page<ClienteConsultaResponseDTO> obterClientes(Pageable pageable) {
 //        return clienteRepository.findAll(pageable)
 //                .map(cliente -> new ClienteConsultaResponseDTO(
